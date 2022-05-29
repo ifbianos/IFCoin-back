@@ -42,6 +42,10 @@ public class RegisterAccountUseCase {
         return iRepositoryRequestAccount.findByCpf(cpf);
     }
 
+    public void deleteAccountByCpf(String cpf){
+        iRepositoryRequestAccount.delete(findAccountByCpf(cpf));
+    }
+
     public void registerAccount(String cpf){
         RequestAccount requestAccount = findAccountByCpf(cpf);
         String role = requestAccount.getRole();

@@ -1,16 +1,21 @@
 package com.ifba.domain.dto.requestaccount;
 
-import com.ifba.domain.entity.User;
 import com.ifba.domain.entity.UserRequest;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
+
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 
 @Getter
 @Setter
 @Slf4j
 public class RequestAccountDtoIn {
 
+  //  @NotEmpty
+  //  @Size(min = 2, message = "Usuario deverá ter no minimo 2 caracteres")
     private String name;
     private String lastName;
     private String cpf;

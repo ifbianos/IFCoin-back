@@ -9,8 +9,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import javax.mail.MessagingException;
-import java.io.IOException;
+import javax.validation.Valid;
+import java.util.HashMap;
 import java.util.List;
 
 @Slf4j
@@ -30,14 +30,20 @@ public class RequestAccountController {
     }
 
     @PostMapping
-    public ResponseEntity<RequestAccountDtoOut> create(@RequestBody RequestAccountDtoIn requestAccountDtoIn) throws MessagingException, IOException {
+    public ResponseEntity<HashMap<String,String>> create(@Valid @RequestBody  RequestAccountDtoIn requestAccountDtoIn) {
      //   MailBody mailBody = new MailBody(requestAccountConvert.dtoInToDtoOut(requestAccountDtoIn));
        // mailSender.send(mailBody.sendEmail());
        // mailBody.sendEmail();
+
+
         requestAccountUseCase.saveRequestAccount(requestAccountConvert.dtoToEntity(requestAccountDtoIn));
 
+        HashMap<String,String> message = new HashMap<>();
+        message.put("msg","Conta criada com sucesso");
+
         return ResponseEntity.created(ServletUriComponentsBuilder.fromCurrentRequest().buildAndExpand(requestAccountDtoIn)
-                .toUri()).body(requestAccountConvert.dtoInToDtoOut(requestAccountDtoIn));
+                .toUri()).body(message);
+        //.body(requestAccountConvert.dtoInToDtoOut(requestAccountDtoIn));
 
     }
 
