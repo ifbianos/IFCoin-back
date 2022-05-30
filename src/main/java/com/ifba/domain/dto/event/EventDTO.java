@@ -1,12 +1,14 @@
 package com.ifba.domain.dto.event;
 
 import com.ifba.domain.entity.Student;
+import lombok.Getter;
+import lombok.Setter;
 
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import java.util.Date;
 import java.util.List;
 
+@Getter
+@Setter
 public class EventDTO {
 
     private String id;

@@ -40,8 +40,7 @@ public class RegisterController {
         HashMap<String,String> message = new HashMap<>();
         message.put("msg","Conta deletada com sucesso");
 
-        return ResponseEntity.created(ServletUriComponentsBuilder.fromCurrentRequest().buildAndExpand(cpf)
-                .toUri()).body(message);
+        return ResponseEntity.ok().body(message);
     }
 
 
