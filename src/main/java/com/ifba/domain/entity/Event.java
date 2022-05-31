@@ -3,9 +3,7 @@ package com.ifba.domain.entity;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
 
@@ -15,15 +13,24 @@ import java.util.List;
 @Entity
 public class Event {
 
+    private static final long serialVersionUID = 1L;
+
     @Id
-    private String id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private String name;
-    private String status;
-    private Date startAt;
-    private Date finishAt;
+    private String status = "Nao iniciado";
+    private String description;
+
+    //jsonignore
+    private Date startAt; // fazer a logica disso dps
+
     private Integer ifCoins;
-    private Date date;
-    @OneToMany
-    private List<Student> studentList;
+    @ManyToMany
+    private List<Student> pendingStudentList;
+
+    @ManyToMany
+    private List<Student> StudentList;
+
 
 }

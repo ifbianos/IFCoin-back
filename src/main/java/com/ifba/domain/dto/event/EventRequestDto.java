@@ -4,19 +4,21 @@ import com.ifba.domain.entity.Student;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.sql.Timestamp;
 import java.util.Date;
 import java.util.List;
 
+
 @Getter
 @Setter
-public class EventDTO {
+public class EventRequestDto {
 
-    private Long id;
     private String name;
-    private String status;
-    private Date startAt;
-    private Date finishAt;
+    private String description;
+    private Timestamp startAt; // fazer a logica disso dps
+    private Timestamp finishAt;
     private Integer ifCoins;
-    private List<Student> studentList;
+    private List<Long> requestStudentList;
+
 
 }

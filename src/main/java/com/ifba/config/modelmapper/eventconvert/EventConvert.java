@@ -2,15 +2,17 @@ package com.ifba.config.modelmapper.eventconvert;
 
 import com.ifba.config.modelmapper.ModelMapperConfig;
 import com.ifba.domain.dto.event.EventDTO;
-import com.ifba.domain.dto.requestaccount.RequestAccountDtoIn;
-import com.ifba.domain.dto.requestaccount.RequestAccountDtoOut;
+import com.ifba.domain.dto.event.EventRequestDto;
 import com.ifba.domain.entity.Event;
-import com.ifba.domain.entity.RequestAccount;
+import com.ifba.domain.entity.Student;
+import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.TypeToken;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+
+@Slf4j
 @Service
 public class EventConvert {
 
@@ -21,7 +23,7 @@ public class EventConvert {
     }
 
     public Event dtoToEntity(EventDTO eventDTO){
-        return modelMapperConfig.modelMapper().map(eventDTO,Event.class);
+        return modelMapperConfig.modelMapper().map(eventDTO, Event.class);
     }
 
     public EventDTO entityToDto(Event event){
@@ -30,5 +32,23 @@ public class EventConvert {
 
     public List<EventDTO> entityToListDTO(List<Event> eventList){
         return modelMapperConfig.modelMapper().map(eventList,new TypeToken<List<EventDTO>>() {}.getType());
+    }
+
+
+
+
+
+    public Event requestDtoToEntity(List<Student> studentList, EventRequestDto eventRequestDto){
+        Event event = modelMapperConfig.modelMapper().map(eventRequestDto, Event.class);
+        event.setPendingStudentList(studentList);
+        return event;
+    }
+
+    public EventRequestDto entityToRequestDto(Event event){
+        return modelMapperConfig.modelMapper().map(event,EventRequestDto.class);
+    }
+
+    public List<EventRequestDto> entityToRequestListDTO(List<Event> eventList){
+        return modelMapperConfig.modelMapper().map(eventList,new TypeToken<List<EventRequestDto>>() {}.getType());
     }
 }

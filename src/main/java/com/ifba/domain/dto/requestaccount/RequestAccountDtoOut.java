@@ -9,6 +9,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class RequestAccountDtoOut {
 
+    private Long Id;
     private String name;
     private String lastName;
     private String cpf;

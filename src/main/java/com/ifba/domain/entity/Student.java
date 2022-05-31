@@ -10,7 +10,10 @@ import javax.persistence.*;
 @Entity
 public class Student {
 
+    private static final long serialVersionUID = 1L;
+
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
     private String cpf;
