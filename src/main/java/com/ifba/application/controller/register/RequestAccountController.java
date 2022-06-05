@@ -30,12 +30,12 @@ public class RequestAccountController {
     }
 
     @PostMapping
-    public ResponseEntity<HashMap<String,String>> create(@Valid @RequestBody  RequestAccountDtoIn requestAccountDtoIn) {
+    public ResponseEntity<HashMap<String,String>> create(@Valid @RequestBody RequestAccountDtoIn requestAccountDtoIn) {
      //   MailBody mailBody = new MailBody(requestAccountConvert.dtoInToDtoOut(requestAccountDtoIn));
        // mailSender.send(mailBody.sendEmail());
        // mailBody.sendEmail();
 
-
+            log.info("adsadsa");
         requestAccountUseCase.saveRequestAccount(requestAccountConvert.dtoToEntity(requestAccountDtoIn));
 
         HashMap<String,String> message = new HashMap<>();
