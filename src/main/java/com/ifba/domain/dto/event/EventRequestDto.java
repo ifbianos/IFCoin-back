@@ -15,8 +15,8 @@ public class EventRequestDto {
 
     private String name;
     private String description;
-    private Timestamp startAt; // fazer a logica disso dps
-    private Timestamp finishAt;
+    private Date startAt; // fazer a logica disso dps
+    private Date finishAt;
     private Integer ifCoins;
     private List<Long> requestStudentList;
 
