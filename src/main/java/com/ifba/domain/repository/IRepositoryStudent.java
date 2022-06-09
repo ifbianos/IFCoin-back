@@ -10,7 +10,7 @@ import java.util.List;
 
 public interface IRepositoryStudent extends JpaRepository< Student,Long> {
 
-    List<Student> findByNameContaining(String containing);
+    List<Student> findByNameContainingIgnoreCaseOrderByNameAsc(String containing);
     Student findByCpf(String cpf);
 
 }

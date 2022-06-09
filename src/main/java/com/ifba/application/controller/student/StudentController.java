@@ -27,7 +27,6 @@ public class StudentController {
     @GetMapping
     public ResponseEntity<List<Student>> findStudentByContainingString(@RequestParam String containing){
         studentUseCase.findStudentByContainingString(containing);
-
         return ResponseEntity.created(ServletUriComponentsBuilder.fromCurrentRequest().buildAndExpand(containing)
                 .toUri()).body( studentUseCase.findStudentByContainingString(containing));
     }

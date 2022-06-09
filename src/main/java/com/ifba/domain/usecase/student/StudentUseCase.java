@@ -16,6 +16,7 @@ public class StudentUseCase {
     }
 
     public List<Student> findStudentByContainingString(String containing){
-        return iRepositoryStudent.findByNameContaining(containing);
+        return containing.isEmpty() ? null :
+         iRepositoryStudent.findByNameContainingIgnoreCaseOrderByNameAsc(containing);
     }
 }
