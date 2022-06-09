@@ -35,7 +35,6 @@ public class RequestAccountController {
        // mailSender.send(mailBody.sendEmail());
        // mailBody.sendEmail();
 
-            log.info("adsadsa");
         requestAccountUseCase.saveRequestAccount(requestAccountConvert.dtoToEntity(requestAccountDtoIn));
 
         HashMap<String,String> message = new HashMap<>();

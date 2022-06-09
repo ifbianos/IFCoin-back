@@ -18,6 +18,9 @@ public class RequestAccountDtoIn {
     private String lastName;
     @Size(min = 11, max = 11, message = "O Seu cpf nome deve ter 11 caracteres")
     private String cpf;
+    //@Size(min = 5, max = 9, message = "O tipo de ter entre 5 a 9 caracteres")
+    private String email;
+    @Size(min = 5, max = 9, message = "O tipo de ter entre 5 a 9 caracteres")
     private String role;
 
     @Valid

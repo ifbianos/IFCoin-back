@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.util.HashMap;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("api/user/recoverpassword")
@@ -21,14 +22,14 @@ public class RecoverPasswordController {
     }
 
     @PostMapping
-    public ResponseEntity<HashMap<String,String>> recoverPassword(@RequestParam String cpf){
-
-        recoverPassword.recoverPassword(cpf);
+    public ResponseEntity<HashMap<String,String>> recoverPassword(@RequestParam String email){
+        String token = UUID.randomUUID().toString(); // sera q n pode criar outro dps ?
+        recoverPassword.createPasswordResetTokenForUser(email);
 
         HashMap<String,String> message = new HashMap<>();
         message.put("msg","Conta aceita com sucesso");
 
-        return ResponseEntity.created(ServletUriComponentsBuilder.fromCurrentRequest().buildAndExpand(cpf)
+        return ResponseEntity.created(ServletUriComponentsBuilder.fromCurrentRequest().buildAndExpand(email)
                 .toUri()).body(message);
     }
 }

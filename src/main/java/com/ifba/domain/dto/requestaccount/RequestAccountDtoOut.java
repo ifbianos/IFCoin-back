@@ -12,6 +12,7 @@ public class RequestAccountDtoOut {
     private Long Id;
     private String name;
     private String lastName;
+    private String email;
     private String cpf;
     private String role;
 
