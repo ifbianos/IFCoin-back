@@ -21,7 +21,7 @@ public class RequestAccountUseCase {
     }
 
     public RequestAccount saveRequestAccount(RequestAccount requestAccount){
-        blockRequests.blockDuplicateAttributes(requestAccount.getCpf());
+        blockRequests.blockDuplicateAttributes(requestAccount.getCpf(),requestAccount.getUserRequest().getUsername());
         blockRequests.blockNonexistentRole(requestAccount.getRole());
         return iRepositoryRequestAccount.save(requestAccount);
     }

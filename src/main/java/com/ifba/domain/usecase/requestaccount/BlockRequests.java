@@ -15,24 +15,34 @@ public class BlockRequests {
     private final IRepositoryTeacher iRepositoryTeacher;
     private final IRepositoryCoordinator iRepositoryCoordinator;
     private final IRepositoryStore iRepositoryStore;
+    private final IRepositoryUser iRepositoryUser;
+    private final IRepositoryUserRequest iRepositoryUserRequest;
 
     //injetado via controlador
-    public BlockRequests(IRepositoryRequestAccount iRepositoryRequestAccount, IRepositoryStudent iRepositoryStudent, IRepositoryTeacher iRepositoryTeacher, IRepositoryCoordinator iRepositoryCoordinator, IRepositoryStore iRepositoryStore) {
+    public BlockRequests(IRepositoryRequestAccount iRepositoryRequestAccount, IRepositoryStudent iRepositoryStudent, IRepositoryTeacher iRepositoryTeacher, IRepositoryCoordinator iRepositoryCoordinator, IRepositoryStore iRepositoryStore, IRepositoryUser iRepositoryUser, IRepositoryUserRequest iRepositoryUserRequest) {
         this.iRepositoryRequestAccount = iRepositoryRequestAccount;
         this.iRepositoryStudent = iRepositoryStudent;
         this.iRepositoryTeacher = iRepositoryTeacher;
         this.iRepositoryCoordinator = iRepositoryCoordinator;
         this.iRepositoryStore = iRepositoryStore;
+        this.iRepositoryUser = iRepositoryUser;
+        this.iRepositoryUserRequest = iRepositoryUserRequest;
     }
 
-    public void blockDuplicateAttributes(String cpf){
+    public void blockDuplicateAttributes(String cpf,String username){
         if(iRepositoryRequestAccount.findByCpf(cpf) != null
                 || iRepositoryStudent.findByCpf(cpf)  != null
                 || iRepositoryTeacher.findByCpf(cpf)  != null
                 || iRepositoryCoordinator.findByCpf(cpf)  != null
                 || iRepositoryStore.findByCpf(cpf)  != null
+                || iRepositoryStore.findByCpf(cpf)  != null
         )
             throw new UniversalErro(ErroEnum.DUPLICATE_CPF);
+
+        if(iRepositoryUserRequest.findByUsername(username) != null
+                || iRepositoryUser.findByUsername(username)  != null
+        )
+            throw new UniversalErro(ErroEnum.DUPLICATE_USERNAME);
     }
 
     public void blockNonexistentRole(String role){

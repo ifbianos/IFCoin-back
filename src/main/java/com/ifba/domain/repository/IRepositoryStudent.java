@@ -12,5 +12,6 @@ public interface IRepositoryStudent extends JpaRepository< Student,Long> {
 
     List<Student> findByNameContainingIgnoreCaseOrderByNameAsc(String containing);
     Student findByCpf(String cpf);
+    Student findByUserId(Long id);
 
 }

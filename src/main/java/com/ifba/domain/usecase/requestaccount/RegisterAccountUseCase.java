@@ -52,6 +52,7 @@ public class RegisterAccountUseCase {
         if(role.equals(BasicEnum.TEACHER.getDescription())){
             Teacher teacher = modelMapperConfig.modelMapper().map(requestAccount,Teacher.class);
             try{
+                teacher.getUser().setRole(BasicEnum.TEACHER.getDescription());
                 iRepositoryTeacher.save(teacher);
                 iRepositoryRequestAccount.delete(requestAccount);
             }
@@ -62,6 +63,7 @@ public class RegisterAccountUseCase {
         if(role.equals(BasicEnum.STUDENT.getDescription())){
             Student student = modelMapperConfig.modelMapper().map(requestAccount,Student.class);
             try{
+                student.getUser().setRole(BasicEnum.STUDENT.getDescription());
                 iRepositoryStudent.save(student);
                 iRepositoryRequestAccount.delete(requestAccount);
             }

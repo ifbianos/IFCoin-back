@@ -18,6 +18,10 @@ public class Student {
     private String name;
     private String cpf;
 
+    @OneToOne
+    private Wallet wallet;
+
+
     @OneToOne(cascade={CascadeType.ALL})
     private User user;
 }
