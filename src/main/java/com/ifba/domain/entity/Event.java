@@ -30,7 +30,7 @@ public class Event {
     private List<Student> pendingStudentList;
 
     @ManyToMany
-    private List<Student> StudentList;
+    private List<Student> studentList;
 
 
 }

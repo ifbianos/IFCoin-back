@@ -10,6 +10,8 @@ public enum ErroEnum {
     ACCOUNT_NOT_FOUND("Conta não encontrada!", HttpStatus.NOT_FOUND),
     USERNAME_INVALID("Username invalido!", HttpStatus.NOT_FOUND),
     USERNAME_PASSWORD_INVALID("Senha Invalida!", HttpStatus.NOT_FOUND),
+    STUDENT_IN_NONEXISTENT_EVENT("Você não está em um evento!", HttpStatus.NOT_FOUND),
+    GENERIC_ERROR("Ocorreu um erro durante o processo, tente novamente!", HttpStatus.NOT_FOUND),
     WRONG_ROLE("Só poderá cadastrar como professor ou aluno", HttpStatus.BAD_REQUEST),
 
 

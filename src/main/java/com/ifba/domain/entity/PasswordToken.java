@@ -25,12 +25,12 @@ public class PasswordToken {
     private User user;
 
     public PasswordToken(String resetPasswordToken, User user) {
-        log.info("dsadsadas");
+        log.info("pass token");
         this.resetPasswordToken = resetPasswordToken;
         this.user = user;
     }
 
     public PasswordToken() {
-        log.info("dsadsadas");
+        log.info("pass token constru");
     }
 }

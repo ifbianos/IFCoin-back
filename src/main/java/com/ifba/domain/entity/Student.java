@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Getter
 @Setter
@@ -24,4 +25,7 @@ public class Student {
 
     @OneToOne(cascade={CascadeType.ALL})
     private User user;
+
+    @ManyToMany
+    private List<Event> events;
 }
