@@ -4,8 +4,10 @@ package com.ifba.application.controller.login;
 import com.ifba.domain.dto.loginentity.LoginEntity;
 import com.ifba.domain.dto.requestaccount.UserRequestDto;
 import com.ifba.domain.usecase.login.LoginUseCase;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 @RestController
 @RequestMapping("api/user/login")
